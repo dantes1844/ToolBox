@@ -5,11 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using DoubanJiang.Bus.Dto;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using ToolBox.Services.Bus.Dto;
 
-namespace DoubanJiang.Bus
+namespace ToolBox.Services.Bus
 {
     public class BusAppService : IBusAppService
     {
@@ -34,9 +33,9 @@ namespace DoubanJiang.Bus
                 try
                 {
                     var stationIndex = Convert.ToInt32(busInfo.Value);
-                  //  Debug.WriteLine($"{DateTime.Now.Ticks},开始查询");
+                    //  Debug.WriteLine($"{DateTime.Now.Ticks},开始查询");
                     var busList = await BusInfoAsync(stationIndex, busInfo.Key, (int)BusDirection.ToCompany);
-                  //  Debug.WriteLine($"{DateTime.Now.Ticks},查询结束");
+                    //  Debug.WriteLine($"{DateTime.Now.Ticks},查询结束");
                     busInfoDict[busInfo.Key] = string.Join(",", busList.OrderBy(c => c));
                 }
                 catch (Exception ex)

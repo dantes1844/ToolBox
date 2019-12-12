@@ -3,7 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using ToolBox.Services;
 using ToolBox.Views;
-using DoubanJiang.Bus;
+using ToolBox.Services.Bus;
 
 namespace ToolBox
 {

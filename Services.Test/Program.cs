@@ -1,5 +1,5 @@
 ﻿using System;
-using DoubanJiang.Bus;
+using ToolBox.Services.Bus;
 
 namespace Services.Test
 {

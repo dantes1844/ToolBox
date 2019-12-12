@@ -1,4 +1,4 @@
-﻿namespace DoubanJiang.Bus.Dto
+﻿namespace ToolBox.Services.Bus.Dto
 {
     public enum BusDirection
     {

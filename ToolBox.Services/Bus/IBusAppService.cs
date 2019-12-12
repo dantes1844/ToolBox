@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DoubanJiang.Bus
+namespace ToolBox.Services.Bus
 {
     public interface IBusAppService
     {

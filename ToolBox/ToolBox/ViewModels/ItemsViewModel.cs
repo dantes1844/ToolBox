@@ -7,9 +7,8 @@ using Xamarin.Forms;
 
 using ToolBox.Models;
 using ToolBox.Views;
-
-using DoubanJiang.Bus;
 using Android.Widget;
+using ToolBox.Services.Bus;
 
 namespace ToolBox.ViewModels
 {
