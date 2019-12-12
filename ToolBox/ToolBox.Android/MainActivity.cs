@@ -23,7 +23,7 @@ namespace ToolBox.Droid
                 var path = Path.Combine(documentsPath, sqliteFilename);
                 if (File.Exists(path))
                 {
-                   // return;
+                   return;
                 }
 
                 var s = Resources.OpenRawResource(Resource.Raw.toolbox);

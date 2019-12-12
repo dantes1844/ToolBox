@@ -20,7 +20,7 @@ namespace ToolBox.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Bus, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -29,10 +29,10 @@ namespace ToolBox.Views
             {
                 switch (id)
                 {
-                    case (int)MenuItemType.Browse:
+                    case (int)MenuItemType.Bus:
                         MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
-                    case (int)MenuItemType.About:
+                    case (int)MenuItemType.Book:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                 }

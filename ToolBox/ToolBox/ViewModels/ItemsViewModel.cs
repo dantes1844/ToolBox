@@ -20,7 +20,7 @@ namespace ToolBox.ViewModels
 
         public ItemsViewModel()
         {
-            Title = "Browse";
+            Title = "车来了";
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 

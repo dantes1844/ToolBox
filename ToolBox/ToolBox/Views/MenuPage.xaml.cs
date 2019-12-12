@@ -13,16 +13,16 @@ namespace ToolBox.Views
     public partial class MenuPage : ContentPage
     {
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        List<HomeMenuItem> menuItems;
+
+        List<HomeMenuItem> menuItems = new List<HomeMenuItem>()
+        {
+             new HomeMenuItem {Id = MenuItemType.Bus, Title="抽屉" },
+             new HomeMenuItem {Id = MenuItemType.Book, Title="书架" }
+        };
+
         public MenuPage()
         {
             InitializeComponent();
-
-            menuItems = new List<HomeMenuItem>
-            {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
-            };
 
             ListViewMenu.ItemsSource = menuItems;
 
@@ -32,7 +32,9 @@ namespace ToolBox.Views
                 if (e.SelectedItem == null)
                     return;
 
-                var id = (int)((HomeMenuItem)e.SelectedItem).Id;
+                var menuItem = (HomeMenuItem)e.SelectedItem;
+                var id = (int)menuItem.Id;
+                menuItem.Icon = $"{menuItem.Id.ToString().ToLower()}_selection.png";
                 await RootPage.NavigateFromMenu(id);
             };
         }

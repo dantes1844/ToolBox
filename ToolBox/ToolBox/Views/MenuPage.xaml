@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              x:Class="ToolBox.Views.MenuPage"
              Title="Menu">
-             
+
     <StackLayout VerticalOptions="FillAndExpand">
         <ListView x:Name="ListViewMenu"
                     HasUnevenRows="True">
@@ -18,9 +18,19 @@
             </d:ListView.ItemsSource>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="10">
-                            <Label Text="{Binding Title}" d:Text="{Binding .}" FontSize="20"/>
+                    <ViewCell Height="60">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="64"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="{Binding IconDefault}" Margin="20,0,10,0"></Image>
+                            <Label Grid.Column="1"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Start"
+                                   Text="{Binding Title}" 
+                                   d:Text="{Binding .}" 
+                                   FontSize="20"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
