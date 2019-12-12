@@ -26,6 +26,16 @@ namespace ToolBox.Services.Bus
 
         public async Task<Dictionary<string, string>> GetBusListAsync()
         {
+#if DEBUG
+
+            Dictionary<string, string> busInfoDict = new Dictionary<string, string>()
+            {
+                { "723","1,2,3"},{ "596","2,3,4"},{"789","2,5" }
+            };
+
+            return busInfoDict;
+#else
+            
             Dictionary<string, string> busInfoDict = new Dictionary<string, string>();
             Stopwatch stopwatch = Stopwatch.StartNew();
             foreach (var busInfo in BusList())
@@ -47,6 +57,8 @@ namespace ToolBox.Services.Bus
             stopwatch.Stop();
             Debug.WriteLine($"总共:{stopwatch.ElapsedMilliseconds}");
             return busInfoDict;
+#endif
+
         }
 
         async Task<List<int>> BusInfoAsync(int indexOfBus, string busNumber, int direction)

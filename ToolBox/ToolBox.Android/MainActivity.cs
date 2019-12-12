@@ -29,5 +29,20 @@ namespace ToolBox.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        private DateTime? lastClickTime = null;
+
+        public override void OnBackPressed()
+        {
+            if (lastClickTime.HasValue && (DateTime.Now - lastClickTime.Value).TotalSeconds < 2)
+            {
+                base.OnBackPressed();
+            }
+            else
+            {
+                Toast.MakeText(Application.Context, "再点一次退出", ToastLength.Short).Show();
+                lastClickTime = DateTime.Now;
+            }
+        }
     }
 }
