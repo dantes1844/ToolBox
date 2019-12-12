@@ -4,11 +4,10 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
-
-using ToolBox.Models;
 using ToolBox.Views;
 using Android.Widget;
 using ToolBox.Services.Bus;
+using ToolBox.Core.Domain;
 
 namespace ToolBox.ViewModels
 {

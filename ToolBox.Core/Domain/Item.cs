@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ToolBox.Models
+namespace ToolBox.Core.Domain
 {
     public class Item
     {

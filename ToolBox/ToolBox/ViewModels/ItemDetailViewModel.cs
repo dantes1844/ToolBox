@@ -1,6 +1,5 @@
 ﻿using System;
-
-using ToolBox.Models;
+using ToolBox.Core.Domain;
 
 namespace ToolBox.ViewModels
 {

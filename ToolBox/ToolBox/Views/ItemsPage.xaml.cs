@@ -6,10 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using ToolBox.Models;
 using ToolBox.Views;
 using ToolBox.ViewModels;
+using ToolBox.Core.Domain;
 
 namespace ToolBox.Views
 {

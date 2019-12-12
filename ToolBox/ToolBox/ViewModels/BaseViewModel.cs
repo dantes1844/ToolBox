@@ -4,9 +4,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
-
-using ToolBox.Models;
 using ToolBox.Services;
+using ToolBox.Core.Domain;
 
 namespace ToolBox.ViewModels
 {

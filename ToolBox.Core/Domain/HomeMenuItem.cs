@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ToolBox.Models
+namespace ToolBox.Core.Domain
 {
     public enum MenuItemType
     {

@@ -2,9 +2,8 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-using ToolBox.Models;
 using ToolBox.ViewModels;
+using ToolBox.Core.Domain;
 
 namespace ToolBox.Views
 {

@@ -6,58 +6,46 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using ToolBox.Data;
 using ToolBox.Services.Bus.Dto;
 
 namespace ToolBox.Services.Bus
 {
     public class BusAppService : IBusAppService
     {
+        private BusStationMarkRepository repository = new BusStationMarkRepository();
+
         public BusAppService() { }
 
         private readonly string urlFormat = "http://bus.wuhancloud.cn:9087/website//web/420100/line/027-{0}-{1}.do?Type=LineDetail";
         private readonly HttpClient _client = new HttpClient();
 
-        private static Dictionary<string, int> BusList()
-        {
-            return new Dictionary<string, int>() {
-                {"405",13 },{ "380",20},{ "789",29}
-            };
-        }
+
 
         public async Task<Dictionary<string, string>> GetBusListAsync()
         {
-#if DEBUG
-
-            Dictionary<string, string> busInfoDict = new Dictionary<string, string>()
-            {
-                { "723","1,2,3"},{ "596","2,3,4"},{"789","2,5" }
-            };
-
-            return busInfoDict;
-#else
-            
+            var busList = await repository.GetItemsAsync();
             Dictionary<string, string> busInfoDict = new Dictionary<string, string>();
-            Stopwatch stopwatch = Stopwatch.StartNew();
-            foreach (var busInfo in BusList())
+            foreach (var busInfo in busList.Where(c => !c.IsDeleted))
             {
                 try
                 {
-                    var stationIndex = Convert.ToInt32(busInfo.Value);
-                    //  Debug.WriteLine($"{DateTime.Now.Ticks},开始查询");
-                    var busList = await BusInfoAsync(stationIndex, busInfo.Key, (int)BusDirection.ToCompany);
-                    //  Debug.WriteLine($"{DateTime.Now.Ticks},查询结束");
-                    busInfoDict[busInfo.Key] = string.Join(",", busList.OrderBy(c => c));
+                    var stationIndex = Convert.ToInt32(busInfo.MarkStationNumber);
+
+#if DEBUG
+                    busInfoDict[busInfo.BusNumber] = "1,2,4";
+#else
+                    var dto = await BusInfoAsync(stationIndex, busInfo.BusNumber, (int)BusDirection.ToCompany);
+                    busInfoDict[busInfo.BusNumber] = string.Join(",", dto.OrderBy(c => c));
+#endif
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"查询{busInfo.Key}时出错:{ex}");
+                    Debug.WriteLine($"查询{busInfo.BusNumber}时出错:{ex}");
                     throw;
                 }
             }
-            stopwatch.Stop();
-            Debug.WriteLine($"总共:{stopwatch.ElapsedMilliseconds}");
             return busInfoDict;
-#endif
 
         }
 
